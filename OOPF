@@ -1,9 +1,10 @@
 # Class is a blueprint for creating new objects
 Class: Humam
+
 # Object is an instance of a class
 Objects: John, Mary, Jack
 
-Attributes: 
+# Attributes: 
 class attributes - attribute that every object shares, 
 instance attribute - unique attributes
 
@@ -11,3 +12,20 @@ instance attribute - unique attributes
 method of an instance - operates on an instance of the class
 Instance Methods: When the method relies on the instance’s attributes or behavior (e.g., name, eye_color).
 Class Methods: When the method deals with class-level data or functionality shared across all instances, or to create alternative constructors.
+
+# Control over an attribute in a class
+Use property - an object that sits in front of an attribute and allows us to set the value of an attribute
+@property
+
+# Inheritance
+mechanism that allows us to define a common behaviour in one class and inherit them in other classes.
+inheritance applies to classes and attributes
+
+# Customer Exception
+Custom exception class like InvalidOperationError in your habit tracker to handle situations where an operation is invalid
+
+# Polymorphicism ' many forms'
+
+# Duck Typing
+
+
