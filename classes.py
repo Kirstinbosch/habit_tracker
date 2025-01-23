@@ -1,11 +1,3 @@
-# class is a blueprint for creating new objects
-# object is an instance of a class
-
-# Class: Humam
-# Objects: John, Mary, Jack
-import questionary
-
-user = input("What's your name?")
 
 
 class Habit:
@@ -26,10 +18,6 @@ class Habit:
     def update_notes(self, new_note):
         self.notes.append(new_note)
 
-    def falling_off_target(self):
-        if len(self.end_date) <= self.goal_per_week:
-            return f"Get back on track {user}"
-
 
 class Analytics:
     def __init__(self, current_streak, longest_streak):
@@ -45,6 +33,6 @@ class Analytics:
     def reset_streak(self):
         self.current_streak = 0
 
-    def falling_off_target(self):
-        if len(self.end_date) <= self.goal_per_week:
-            return f"Get back on track {user}"
+
+
+
