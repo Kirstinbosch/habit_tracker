@@ -5,8 +5,8 @@ Class: Humam
 Objects: John, Mary, Jack
 
 # Attributes: 
-class attributes - attribute that every object shares, 
-instance attribute - unique attributes
+class attributes - attribute that every object shares, species = "Human"
+instance attribute - unique attributes to each user (name or race)
 
 # Methods: method of a class - operates on the class rather than any specific instance (creating factory methods),  
 method of an instance - operates on an instance of the class
