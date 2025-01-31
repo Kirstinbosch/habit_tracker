@@ -9,7 +9,7 @@ class Habit:
 
     valid_periodicity = ["Daily", "Weekly"]
     valid_habit_types = ["Health", "Productivity",
-                         , "Social", "Other"]
+                         "Social", "Other"]
 
     def __init__(self, name, habit_type, periodicity, start_date, end_date, completion_check, notes):
         self.name = name
