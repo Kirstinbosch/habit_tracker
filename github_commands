@@ -1,6 +1,0 @@
-
-# Save your file first!
-git status                            # Check the status of your repo
-git add reminder.py                   # Stage your changes
-git commit -m "Your commit message"   # Commit your changes
-git push origin main                  # Push changes to GitHub
