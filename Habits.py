@@ -11,13 +11,13 @@ class Habit:
     valid_habit_types = ["Health", "Productivity",
                          "Social", "Other"]
 
-    def __init__(self, name, habit_type, periodicity, start_date, end_date, completion_check, notes):
+    def __init__(self, name, habit_type, periodicity, start_date, end_date, completion_check, description):
         self.name = name
         self.habit_type = habit_type
         self.periodicity = periodicity
         self.start_date = self.validate_date(start_date)
         self.end_date = self.validate_date(end_date)
-        self.notes = notes if notes is not None else []
+        self.description = description if description is not None else []
         self.completion_check = False
 
     def add_habit(self):

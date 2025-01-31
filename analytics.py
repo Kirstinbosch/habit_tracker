@@ -62,5 +62,5 @@ def falling_off_target(self):
             else:
                 missed_streak = 0
             if missed_streak == 3:
-                return f"You're falling off target for your habit: {self.habit.name}.
+                return(f"You're falling off target for your habit: {self.habit.name}.")
 

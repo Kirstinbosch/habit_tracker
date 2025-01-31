@@ -22,7 +22,7 @@ class Database:
                 time_spent TEXT
                 start_date TEXT,
                 end_date
-                notes TEXT
+                description TEXT
             )
         """)
         self.connection.commit()
@@ -51,7 +51,7 @@ class Database:
                     time_spent=row[4],
                     start_date=row[5],
                     end_date=row[6],
-                    notes=row[7]
+                    description=row[7]
                 ) for row in rows
             ]
             return habits
