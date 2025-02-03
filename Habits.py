@@ -26,11 +26,6 @@ class Habit:
     def remove_habit(self):
         print(f"You have removed {self.name}.")
 
-    def edit_habit(self):
-        print(f"You have made changes to {self.name}.")
-
-    def update_notes(self, new_note):
-        self.notes.append(new_note)
 
     def completion_check(self, completed: bool):
         self.completion_check = completed

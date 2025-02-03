@@ -17,31 +17,35 @@ class Database:
             CREATE TABLE IF NOT EXISTS habits (
                 habit_id INTEGER PRIMARY KEY,
                 name TEXT,
-                habit_type
+                habit_type TEXT,
                 periodicity TEXT,
                 time_spent TEXT
                 start_date TEXT,
-                end_date
-                description TEXT
+                end_date TEXT,
+                description TEXT,
+                completion_check TEXT
             )
         """)
         self.connection.commit()
         print("Table created.")
 
-    def insert_habit(self, name: str, habit_type: str, periodicity: str, time_spent: str = None, start_date: str, end_date: str = None, notes: str = None):
+    def insert_habit(self, name: str, habit_type: str, periodicity: str, time_spent: str = None, start_date: str, end_date: str = None, description: str = None):
         try:
-            self.cursor.execute(name, habit_type, periodicity,
-                                start_date, time_spent, end_date, notes)
+            self.cursor.execute("""
+                INSERT INTO habits (name, habit_type, periodicity, start_date, end_date, description, completion_check)
+                VALUES (?,?,?,?,?,?,?)
+            """, (name, habit_type, periodicity,
+                                start_date, time_spent, end_date, description, completion_check))
             self.connection.commit()
             print(
                 f"Habit '{name}' has been successfully added to the database")
         except sqlite3.Error as e:
             print(f"An error occured while inserting the habit: {e}")
 
-    def get_habits(self) -> List['Habits']:
+    def get_habits(self) -> List[Habits]:
         try:
             self.cursor.execute("SELECT * FROM habits")
-            row = self.cursor.fetchall()
+            rows = self.cursor.fetchall()
             habits = [
                 Habit(
                     habit_id=row[0],
