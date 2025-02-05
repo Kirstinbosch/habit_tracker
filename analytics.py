@@ -36,21 +36,19 @@ class Analytics:
     def calculate_completion_rate(self):
         total_days = self.get_total_days()
         if self.habit.periodicity == "daily"
-         potential_completions = total_days
+            potential_completions = total_days
         else self.habit.periodicity == "weekly"
-          potential_completions = (total_days // 7) + (1 if total_days % 7 != 0 else 0)
+            potential_completions = (total_days // 7) + (1 if total_days % 7 != 0 else 0)
     
         actual_completions = len(self.habit.completions)
 
         completion_rate = (actual_completions / potential_completions) * 100
             return completion_rate
 
-    
-# def calculate_habits_by_periodicity(self)
 
     def reward_achievement(self):
         if self.habit.end_date < datetime.today():
-            if all(self.habit.completion_check):
+            if completion_rate == 100 or all(self.habit.completion_check):
                 return(f"Congratulations! You have successfully completed your habit: {self.habit.name}.")
 
 

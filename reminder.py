@@ -1,3 +1,8 @@
+"""
+This module displays the Reminder Class for sending notifications to the user
+"""
+
+
 from datetime import datetime
 from plyer import notification
 
@@ -11,7 +16,7 @@ class Reminder:
     
     def validate_datetime(self, datetime_str: str):
         try: 
-            return datetime. strptime(datetime_str, "%H:%M")
+            return datetime.strptime(datetime_str, "%H:%M")
         except ValueError:
             raise ValueError(f"Invalid datetime format: '{datetime_str}'. Expected format is HH:MM")
         
@@ -38,7 +43,7 @@ class Reminder:
         print(f"Reminder for habit '{self.name}' updated.")
 
     def cancel_reminder(self):
-        self.is_active = True
+        self.is_active = False
         print(f"Reminder for habit '{self.name}' has been cancelled.")
     
      def retrieve_reminder_details(self):
@@ -47,7 +52,6 @@ class Reminder:
         'name': self.name,
         'reminder_time': self.reminder_time,
         'message': self.message,
-        'frequency': self.frequency
         }
 
         

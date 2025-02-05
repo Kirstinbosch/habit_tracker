@@ -8,12 +8,9 @@ from datetime import datetime
 class Habit:
 
     valid_periodicity = ["Daily", "Weekly"]
-    valid_habit_types = ["Health", "Productivity",
-                         "Social", "Other"]
 
-    def __init__(self, name, habit_type, periodicity, start_date, end_date, completion_check, description):
+    def __init__(self, habit_id: int, name: str, , periodicity: str, start_date: date, end_date: date, completion_check: bool, description: str):
         self.name = name
-        self.habit_type = habit_type
         self.periodicity = periodicity
         self.start_date = self.validate_date(start_date)
         self.end_date = self.validate_date(end_date)
@@ -28,8 +25,8 @@ class Habit:
 
 
     def completion_check(self, completed: bool):
-        self.completion_check = completed
-        if self.completed:
+        self.is_completed = completed
+        if self.is_completed:
             print(f"'{self.name}' has been marked as completed for today!")
         else:
             print(f"'{self.name}' has not been completed for today")
@@ -37,13 +34,10 @@ class Habit:
     def display_habit_details(self):
         print(f"Habit details:")
         print(f"Name: {self.name}")
-        print(f"Type: {self.habit_type}")
         print(f"Periodicity: {self.periodicity}")
         print(f"Start Date: {self.start_date}")
-        print(
-            f"End Date: {self.end_date if self.end_date else 'Not specified'} ")
-        print(
-            f"Notes: {', '.join(self.notes) if self.notes else 'No notes added'}")
+        print(f"End Date: {self.end_date if self.end_date else 'Not specified'} ")
+        print(f"Description: {', '.join(self.notes) if self.notes else 'No notes added'}")
 
     def validate_date(self, date_str):
         try:
@@ -58,8 +52,4 @@ class Habit:
                 f"Invalid periodicity: {periodicity}'. Choode from {self.valid_periodicity}.")
         return periodicity
 
-    def validate_habit_type(self, habit_type):
-        if habit_type not in self.valid_habit_types:
-            raise ValueError(
-                f"Invalid habit type: '{habit_type}'. Choose from {self.valid_habit_types}.")
-        return habit_type
+ 

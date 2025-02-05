@@ -17,7 +17,6 @@ class Database:
             CREATE TABLE IF NOT EXISTS habits (
                 habit_id INTEGER PRIMARY KEY,
                 name TEXT,
-                habit_type TEXT,
                 periodicity TEXT,
                 time_spent TEXT
                 start_date TEXT,
@@ -29,7 +28,7 @@ class Database:
         self.connection.commit()
         print("Table created.")
 
-    def insert_habit(self, name: str, habit_type: str, periodicity: str, time_spent: str = None, start_date: str, end_date: str = None, description: str = None):
+    def insert_habit(self, name: str, habit_id: int, periodicity: str, time_spent: str = None, start_date: str, end_date: str = None, description: str = None):
         try:
             self.cursor.execute("""
                 INSERT INTO habits (name, habit_type, periodicity, start_date, end_date, description, completion_check)
@@ -63,17 +62,6 @@ class Database:
             print(f"An error occured while retrieving habits: {e}")
             return []
 
-        def update_habit(self, habit_id: int, name: str, habit_type: str, periodicity: int):
-            try:
-                self.cursor.execute("""
-                    UPDATE habits
-                    SET name = ?, habit_type = ?, periodicity = ?
-                    WHERE habit_id = ?
-                """, (name, habit_type, periodicidty, habit_id))
-                self.connection.commit()
-                print(f"Habit with ID {habit_id} has been updated")
-            except sqlite3.Error as e:
-                print(f"An error occured while updating the habit: {e}")
 
     def delete_habit(self, habit_id: int):
         try:
