@@ -32,15 +32,6 @@ class Reminder:
         self.reminder_time = self.validate_datetime(reminder_time)
         self.message = message
         print(f"Reminder scheduled for habit '{self.name}' at {self.reminder_time}.")
-        
-    def update_reminder(self, reminder_time: str = None, message: str = None, frequency: str = None):
-        if reminder_time:
-            self.reminder_time = self.validate_datetime(reminder_time)
-        if message:
-            self.message = message
-        if frequency:
-            self.frequency = frequency
-        print(f"Reminder for habit '{self.name}' updated.")
 
     def cancel_reminder(self):
         self.is_active = False
