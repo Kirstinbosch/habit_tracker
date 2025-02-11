@@ -1,3 +1,7 @@
+"""
+This module contains the test cases for the Habit Tracking application.
+"""
+
 import unittest
 from habits import Habit
 from unittest.mock import patch

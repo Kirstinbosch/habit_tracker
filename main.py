@@ -1,4 +1,6 @@
-
+"""
+This module provides the main interface for interacting with the habit tracker.
+"""
 import questionary
 import plyer
 from Habits import Habit
@@ -6,17 +8,26 @@ from analytics import Analytics
 from reminder import Reminder
 from database import Database
 
+"""
+Thhis main function runs the habit tracker
+"""
 def main():
     db = Database()
     db.connect()
     db.create_tables()
 
+"""
+Provides a main menu function where the user can make a selection
+"""
     while True:
         user_selection = questionary.select(
             "What would you like to do?",
             choices=["Add Habit", "View Habits", "Set Reminder", "Exit"],
         ).ask()
 
+"""
+Adds a new habit
+"""
         if user_selection == "Add Habit":
             name = questionary.text("Enter habit name:").ask()
             habit_type = questionary.text("Enter habit type:").ask()
@@ -27,6 +38,9 @@ def main():
 
             db.insert_habit(name, habit_type, periodicity, start_date=start_date, end_date=end_date, description)
 
+"""
+Lists habits
+"""
         elif user_selection == "View Habits":
             habits = db.get_habits()
             if not habits:
@@ -58,7 +72,10 @@ def main():
                 f"What would you like to do with '{selected_habit}'?",
                 choices=habit_actions
             ).ask()
-            
+
+"""
+Provides analytics options
+"""
             if habit_action == "View Analytics":
                 analytics_menu = ["Get Total Habits", "Calculate Current Streak", "Calculate Longest Streak", "Calculate Completion Rate", "Reward Achievement", "Falling Off Target"]
                 analytics_action = questionary.select(
@@ -111,7 +128,9 @@ def main():
                 continue
                 
 
-
+"""
+Set a reminder for a particular habit
+"""
         elif user_selection == "Set Reminder":
             habits = db.get_habits()
             if not habits :

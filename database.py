@@ -1,3 +1,8 @@
+"""
+This module provides the Database class for managing habits stored in a JSON file.
+"""
+
+
 import sqlite3
 
 
