@@ -15,6 +15,7 @@ Python 3.7+
 1. Clone the repository
 
 git clone [https://github.com/yourusername/your-repo.git](https://github.com/Kirstinbosch/habit_tracker.git)
+
 cd habit_tracker
 
 2. Create and activate a virtual environment
@@ -28,13 +29,49 @@ source venv/bin/activate (Linux)
 
 pip install -r requirements.txt
 
-4. Run your python script
+4. (When finished) Deactivate virtual enviornment
+
+deactivate
+
+**Usage Instructions**
+
+1. Run the python script
 
 python main.py
 
-5. (When finished) Deactivate virtual enviornment
+From uploading the main.py file, the user will be asked what they would like to do in the program and they will be presented with a main menu with the following options: "Enter habit", "View Habits", "Set reminder", "Exit".
 
-deactivate
+The user can intuitively navigate the application and perform different functions such as creating habits, viewing current habits, logging entries of habits, and running a number of statistics on the habits to understand progress.
+
+**Using .gitignore**
+
+In order to maintin cleanliness of the repository, include a .gitignore file. This file will avoid committing files that are machine-specific or auto-generated.
+
+The .git ignore file includes:
+venv/             # Virtual environment folder  
+__pycache__/      # Python cache files  
+*.pyc             # Compiled Python files  
+.DS_Store         # macOS system file  
+.env              # Environment variables (if applicable)  
+
+Implement .gitignore:
+
+1. Remove any accidently added ignored files
+
+git rm -r --cached venv/
+
+2. Committ the change
+
+git commit -m "Updated .gitignore to exclude unnecessary files"
+
+3. Push the changes
+
+git push origin main
+
+
+
+
+
 
 
 
