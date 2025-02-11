@@ -14,8 +14,8 @@ Python 3.7+
 
 1. Clone the repository
 
-git clone https://github.com/yourusername/your-repo.git
-cd your-repo
+git clone [https://github.com/yourusername/your-repo.git](https://github.com/Kirstinbosch/habit_tracker.git)
+cd habit_tracker
 
 2. Create and activate a virtual environment
 
