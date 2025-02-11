@@ -7,6 +7,8 @@ highlighting habits that receive the least attention. This application is writte
 code and it uses SQLite as the backend database to store and manage the data. Users can 
 interact with the application via the command-line interface (CLI).
 
+__________________________________________________________________________________________________________
+
 **INSTALLATION INSTRUCTIONS**
 
 Dependencies
@@ -33,6 +35,8 @@ pip install -r requirements.txt
 
 deactivate
 
+__________________________________________________________________________________________________________
+
 **Usage Instructions**
 
 1. Run the python script
@@ -43,11 +47,14 @@ From uploading the main.py file, the user will be asked what they would like to 
 
 The user can intuitively navigate the application and perform different functions such as creating habits, viewing current habits, logging entries of habits, and running a number of statistics on the habits to understand progress.
 
+__________________________________________________________________________________________________________
+
 **Using .gitignore**
 
 In order to maintin cleanliness of the repository, include a .gitignore file. This file will avoid committing files that are machine-specific or auto-generated.
 
 The .git ignore file includes:
+
 venv/             # Virtual environment folder  
 __pycache__/      # Python cache files  
 *.pyc             # Compiled Python files  
