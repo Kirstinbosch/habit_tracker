@@ -53,7 +53,8 @@ In order to maintin cleanliness of the repository, include a .gitignore file. Th
 
 The .git ignore file includes:
 
-        venv/             # Virtual environment folder  
+        venv/             # Virtual environment folder 
+        .vscode/          # VS Code settings, extensions, and configurations
         __pycache__/      # Python cache files  
         *.pyc             # Compiled Python files  
         .DS_Store         # macOS system file  
