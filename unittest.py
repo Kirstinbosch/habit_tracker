@@ -33,6 +33,53 @@ class TestReminder(unittest.TestCase):
     def test_send_notification(self, mock_notify):
         self.reminder.send_notification()
         mock_notify.assert_called_once_with(title="Time for 'Exercise'", message="Time to work out!", timeout=10)
+    
+    def setUp(self):
+        self.habit1 = Habit(
+            name="Exercise",
+            periodicity="daily",
+            start_date="2025-01-01",
+            end_date="2025-31-01","
+            description="Run like you mean it",
+        )
+        self.habit1.completion_check = [True, True, True, False, True, True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, False, True, True, True, False, False, False]
+
+        self.habit2 = Habit(
+            name="Reading",
+            periodicity="weekly",
+            start_date="2025-01-01",
+            description="Read Books",
+        )
+        self.habit2.completion_check = [True, True, True, False]
+
+        self.analytics1 = Analytics(self.habit1)
+        self.analytics2 = Analytics(self.habit2)
+
+        def test_calculate_current_streak_daily(self):
+        """Test the calculate_current_streak method for a daily habit."""
+        today = datetime.today()
+
+        days_since_start = (today - self.habit1.start_date).days
+        expected_streak = days_since_start
+
+        streak = self.analytics1.calculate_current_streak()
+
+        self.assertIn(f"The streak for {self.habit1.name} is {expected_streak} days", streak)
+
+    def test_calculate_current_streak_weekly(self):
+        """Test the calculate_current_streak method for a weekly habit."""
+    
+        today = datetime.today()
+
+        days_since_start = (today - self.habit2.start_date).days
+        expected_streak = days_since_start // 7 
+
+  
+        streak = self.analytics2.calculate_current_streak()
+
+
+        self.assertIn(f"The streak for {self.habit2.name} is {expected_streak} days", streak)
+
 
 
 

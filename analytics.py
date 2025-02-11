@@ -1,3 +1,8 @@
+
+"""
+This module analyzes habits stored in the database.
+"""
+
 from datetime import datetime
 
 """
@@ -7,6 +12,7 @@ class Analytics:
     def __init__(self, habit_id: int, total_habits: int, longest_streak: int, current_streak: int, completion_rate: float)
         self.habit_id = habit_id
         self.total_habits = total_habits
+        self.periodicity = periodicity 
         self.longest_streak = longest_streak
         self.current_streak = current_streak
         self.completion_rate = completion_rate    
@@ -21,7 +27,14 @@ Counts the total number of logged habits
 Calculates the current streak of a particular habit
 """
     def calculate_current_streak(self):
-        streak = (datetime.today() - self.habit.start_date).days
+        days_since_start = (datetime.today() - self.habit.start_date).days
+        if self.habit.periodicity == "daily":
+            streak = days_since_start
+        elif self.habit.periodicity == "weekly":
+            streak = days_since_start // 7
+        else:
+            streak = 0
+        
         return(f"The streak for {self.habit.name} is {streak} days")
 
 """
@@ -33,13 +46,16 @@ Calculates which habit has the longest streak
 
         for habit in self.habits:
             streak = habit.calculate_current_streak()
-            print(f"{habit.name} streak: {streak} days")
+            if habit.periodicity == "weekly":
+                streak = streak // 7
+
+            print(f"{habit.name} streak: {streak} {'weeks' if habit.periodicity == 'weekly' else 'days'}")
 
         if streak > longest_streak:
             longest_streak = streak
             longest_habit = habit
 
-        return(f"The longest streak is {longest_streak} days for the habit: {longest_habit.name}")
+        return f"The longest streak is {longest_streak} {'weeks' if longest_habit.periodicity == 'weekly' else 'days'} for the habit: {longest_habit.name}"
 
 """
 Calculates the total amount of days a habit has been performed for
@@ -54,13 +70,17 @@ Calculates the completion rate of selected habit
         total_days = self.get_total_days()
         if self.habit.periodicity == "daily"
             potential_completions = total_days
-        else self.habit.periodicity == "weekly"
+        elif self.habit.periodicity == "weekly"
             potential_completions = (total_days // 7) + (1 if total_days % 7 != 0 else 0)
     
         actual_completions = len(self.habit.completions)
 
-        completion_rate = (actual_completions / potential_completions) * 100
-            return completion_rate
+        if potential_completions == 0:
+            compeltion_rate = 0
+        else:
+            completion_rate = (actual_completions / potential_completions) * 100
+            
+        return completion_rate
 
 """
 Rewards an achievement if the habit has an end date, and this date has passed and if the completion rate is 100 percent, or all the completion checks have been completed True
